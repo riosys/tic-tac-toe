@@ -1,0 +1,36 @@
+name: Build Vite.js Project
+
+on:
+  push: # Se ejecuta en cada push a la rama main
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Checkout del repositorio
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Paso 2: Configurar Node.js (versión compatible con tu proyecto)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18 # Cambia la versión si es necesario
+
+      # Paso 3: Instalar dependencias
+      - name: Install dependencies
+        run: npm install
+
+      # Paso 4: Construir el proyecto
+      - name: Build project
+        run: npm run build
+
+      # Paso 5: (Opcional) Subir artefactos de build para debugging
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
