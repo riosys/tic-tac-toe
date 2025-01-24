@@ -28,12 +28,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # Paso 5: (Opcional) Subir artefactos de build para debugging
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: dist/
       # Paso 5: Desplegar en GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
