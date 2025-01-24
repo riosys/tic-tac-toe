@@ -4,6 +4,11 @@ on:
   push: # El workflow se ejecutará al hacer push en la rama main
     branches:
       - main
+      
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
